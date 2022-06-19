@@ -1,9 +1,11 @@
 const { Pool } = require('pg');
+const dotenv = require('dotenv');
+dotenv.config();
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'one',
-  password: 'postgres',
+  user: process.env.DBUSER,
+  host: process.env.URI,
+  database: process.env.DBNAME,
+  password: process.env.DBPASS,
   port: 5432,
 })
 
@@ -11,7 +13,7 @@ async function query(query, params) {
   const client = await pool.connect();
   let result = await client.query(query);
   client.release();
-  return result.rows[0]
+  return result.rows
  
 }
 

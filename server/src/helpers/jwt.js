@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const constant = require('../config/constant');
 
 
-async function generateToken(params, expiryTime = '24000h'){
+async function generateToken(params, expiryTime = '4000h'){
     try {
         const options = {
             algorithm: 'HS384',

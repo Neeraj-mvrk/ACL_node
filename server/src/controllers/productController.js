@@ -67,10 +67,11 @@ async function updateProduct(req,res){
 async function  deleteProduct(req,res){
     try {
         if(req.body){
+            console.log(req.body,"::::BODY")
             let body = req.body;
             query ={
                 text: 'delete from public.products where id = $1 RETURNING id',
-                values: [body.post_id]
+                values: [body.id]
         }   
         let data = await db.query(query);
             return {
